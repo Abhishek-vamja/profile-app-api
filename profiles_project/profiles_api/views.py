@@ -154,9 +154,10 @@ class UserProfileFeedViewSet(viewsets.ModelViewSet):
     """
     Handle creating , reading and updating profile feed items
     """
-    authentication_classes = (TokenAuthentication,)
     serializer_class = serializers.ProfileFeedItemSerializer
     queryset = models.ProfileFeedItem.objects.all()
+    
+    authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnStatus,IsAuthenticated)
 
     def perform_create(self, serializer):
